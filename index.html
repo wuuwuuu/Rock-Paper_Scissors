@@ -1,0 +1,55 @@
+<script>
+    function getComputerChoice() {
+        let choice = Math.floor(Math.random() * 3);
+        if (choice == 0) {
+            return "paper";
+        }
+        if (choice == 1) {
+            return "rock";
+        }
+        if (choice == 2) {
+            return "scissors";
+        }
+    }
+    function playRounds(numberOfRounds) {
+        for (let i = 0; i <= numberOfRounds; i++) {
+            let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
+            let computerSelection = getComputerChoice();
+            if (playerSelection == "rock") {
+                if (computerSelection == "paper") {
+                     console.log("You Lose! Paper beats Rock");
+                }
+                if (computerSelection == "rock") {
+                     console.log("You Tie! Both Rocks does Nothing");
+                }
+                if (computerSelection == "scissors") {
+                     console.log("You Win! Rock Beats Scissors");
+                }
+            }
+            if (playerSelection == "paper") {
+                if (computerSelection == "paper") {
+                     console.log("You Tie! Both Papers does nothing");
+                }
+                if (computerSelection == "rock") {
+                     console.log("You Win! Paper Beats Rock");
+                }
+                if (computerSelection == "scissors") {
+                     console.log("You Lose! Paper Loses to Scissors")
+                }
+            }
+            if (playerSelection == "scissors") {
+                if (computerSelection == "paper") {
+                     console.log("You Win! Scissors Beats Paper");
+                }
+                if (computerSelection == "rock") {
+                     console.log("You Lose! Scissors Loses to Rock");
+                }
+                if (computerSelection == "scissors") {
+                     console.log("You Tie! Both Scissors does nothing");
+                }
+            }
+        }
+    }
+    let rounds = prompt("How Many Rounds would you like to play");
+    playRounds(rounds);
+</script>
