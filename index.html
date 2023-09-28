@@ -1,4 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <button id="scissors">Scissors</button>
+        <button id="rock">Rock</button>
+        <button id ="paper">Paper</button>
+    </div>
+    
+</body>
+</html>
+
 <script>
+    let playerChoice = "";
+    const container = document.querySelector("#container");
+
+    const scissorsBtn = document.querySelector('#scissors');
+    scissorsBtn.addEventListener('click', () => {
+        playerChoice = "scissors";
+        playRounds(playerChoice); 
+    });
+
+    const rockBtn = document.querySelector('#rock');
+    rockBtn.addEventListener('click', () => {
+        playerChoice = "rock";
+        playRounds(playerChoice);
+    });
+
+    const paperBtn = document.querySelector('#paper');
+    paperBtn.addEventListener('click', () => {
+        playerChoice = "paper";
+        playRounds(playerChoice);
+    })
+
     function getComputerChoice() {
         let choice = Math.floor(Math.random() * 3);
         if (choice == 0) {
@@ -11,45 +50,56 @@
             return "scissors";
         }
     }
-    function playRounds(numberOfRounds) {
-        for (let i = 0; i <= numberOfRounds; i++) {
-            let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
-            let computerSelection = getComputerChoice();
-            if (playerSelection == "rock") {
-                if (computerSelection == "paper") {
-                     console.log("You Lose! Paper beats Rock");
-                }
-                if (computerSelection == "rock") {
-                     console.log("You Tie! Both Rocks does Nothing");
-                }
-                if (computerSelection == "scissors") {
-                     console.log("You Win! Rock Beats Scissors");
-                }
+    const div = document.createElement('div');
+    function playRounds(playerSelection) {
+        if (container.contains(div)) {
+            container.removeChild(div);
+        }
+        let computerSelection = getComputerChoice();
+        if (playerSelection == "rock") {
+            if (computerSelection == "paper") {
+                    div.textContent = "You Lose! Paper beats Rock";
+                    container.appendChild(div);
             }
-            if (playerSelection == "paper") {
-                if (computerSelection == "paper") {
-                     console.log("You Tie! Both Papers does nothing");
-                }
-                if (computerSelection == "rock") {
-                     console.log("You Win! Paper Beats Rock");
-                }
-                if (computerSelection == "scissors") {
-                     console.log("You Lose! Paper Loses to Scissors")
-                }
+            if (computerSelection == "rock") {
+                div.textContent = "You Tie! Both Rocks does Nothing";
+                container.appendChild(div);
             }
-            if (playerSelection == "scissors") {
-                if (computerSelection == "paper") {
-                     console.log("You Win! Scissors Beats Paper");
-                }
-                if (computerSelection == "rock") {
-                     console.log("You Lose! Scissors Loses to Rock");
-                }
-                if (computerSelection == "scissors") {
-                     console.log("You Tie! Both Scissors does nothing");
-                }
+            if (computerSelection == "scissors") {
+                div.textContent = "You Win! Rock Beats Scissors";
+                container.appendChild(div);
             }
         }
+        if (playerSelection == "paper") {
+            if (computerSelection == "paper") {
+                div.textContent = "You Tie! Both Papers does nothing";
+                container.appendChild(div);
+            }
+            if (computerSelection == "rock") {
+                div.textContent = "You Win! Paper Beats Rock";
+                container.appendChild(div);
+            }
+            if (computerSelection == "scissors") {
+                div.textContent = "You Lose! Paper Loses to Scissors";
+                container.appendChild(div);
+            }
+        }
+        if (playerSelection == "scissors") {
+            if (computerSelection == "paper") {
+                div.textContent = "You Win! Scissors Beats Paper";
+                container.appendChild(div);
+            }
+            if (computerSelection == "rock") {
+                div.textContent = "You Lose! Scissors Loses to Rock";
+                container.appendChild(div);
+            }
+            if (computerSelection == "scissors") {
+                div.textContent = "You Tie! Both Scissors does nothing";
+                container.appendChild(div);
+            }
+        }
+        
     }
-    let rounds = prompt("How Many Rounds would you like to play");
-    playRounds(rounds);
+    // let rounds = prompt("How Many Rounds would you like to play");
+    // playRounds(rounds);
 </script>

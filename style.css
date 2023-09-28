@@ -1,0 +1,16 @@
+body {
+    background-color: lightgray;
+    margin: 80px;
+}
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#scissors, #rock, #paper{
+    background-color: lightskyblue;
+    border-radius: 5px;
+    width: 100px;
+    height:50px;
+    border: 2px solid black;
+}
